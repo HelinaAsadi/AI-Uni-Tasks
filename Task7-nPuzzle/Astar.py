@@ -16,9 +16,9 @@ def heuristic(state):  # h(n) = Manhattan Distance
     return distance
 
 
-def getNeighbors(state):  # getting a tuple of the current state of elements
-    neighbors = []
-    zero = state.index(0)  # finds the place of the 0 node
+def getNeighbors(state):    # getting a tuple of the current state of elements
+    neighbors = []          # will hold possible state tuples
+    zero = state.index(0)   # finds the place of the 0 node
     x, y = divmod(zero, 4)  # getting its coordinates
 
     def swipe(new_zero):  # for swipping elements

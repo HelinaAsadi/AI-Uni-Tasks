@@ -1,7 +1,7 @@
 import tkinter as tk
 from Astar import astar
 
-class PuzzleGUI:
+class PuzzleGUI:   # making the main visual window
     def __init__(self, root):
         self.root = root
         self.root.title("Your A* 15-puzzle solver")
@@ -24,15 +24,15 @@ class PuzzleGUI:
         self.create_buttons()
         self.update_buttons()
 
-    def create_buttons(self):
+    def create_buttons(self):   # creating buttons for the 4by4 grid
         for i in range(4):
             for j in range(4):
                 btn = tk.Button(self.grid_frame, width=4, height=2, font=('Arial', 18),
-                                command=lambda row=i, col=j: self.tile_click(row, col))
+                                command=lambda row=i, col=j: self.button_click(row, col))
                 btn.grid(row=i, column=j, padx=2, pady=2)
                 self.buttons[i][j] = btn
 
-    def update_buttons(self, tiles=None):
+    def update_buttons(self, tiles=None):   # updating buttons after user clicks
         if tiles is None:
             tiles = self.tiles
         for i in range(4):
@@ -43,7 +43,7 @@ class PuzzleGUI:
                 else:
                     self.buttons[i][j].config(text=str(val), state="normal", bg="SystemButtonFace")
 
-    def tile_click(self, row, col):
+    def button_click(self, row, col):   # action to take when user clicks buttons to shuffle them
         index = row * 4 + col
         zero_index = self.tiles.index(0)
         zr, zc = divmod(zero_index, 4)
@@ -52,7 +52,7 @@ class PuzzleGUI:
             self.tiles[zero_index], self.tiles[index] = self.tiles[index], self.tiles[zero_index]
             self.update_buttons()
 
-    def solve_puzzle(self):
+    def solve_puzzle(self):   # calling the "astar" function to solve for the puzzle and report results
         initial_state = tuple(self.tiles)
         result = astar(initial_state)
 
@@ -64,7 +64,7 @@ class PuzzleGUI:
         else:
             self.result_label.config(text="Unsolvable")
 
-    def animate_solution(self, path):
+    def animate_solution(self, path):   # showing each step to animate the solution
         def show_step(index):
             if index < len(path):
                 self.update_buttons(path[index])
