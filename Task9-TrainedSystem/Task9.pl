@@ -16,6 +16,7 @@
 dry_tyre( hard ).
 dry_tyre( medium ).
 dry_tyre( soft ).
+medium_tyre( medium ).
 
 
 light_rain( light ).
@@ -23,6 +24,10 @@ heavy_rain( heavy ).
 
 cool_temp(cool).
 hot_temp(hot).
+
+zero_pits(zero).
+one_pits(one).
+two_pits(two).
 
 
 
@@ -33,7 +38,7 @@ hot_temp(hot).
 % % % % % to import access to the trained model
 :- use_module(library(process)).
 % % % % % for rules using the trained model
-circuit_lap_pitstops(Circuit, Lap, Pitstop) :-
+use_model(Circuit, Lap, Pitstop) :-
     atomic_list_concat([Circuit, Lap, Pitstop], ' ', ArgString),
     process_create(path(python), ['prologIntegration.py', Circuit, Lap, Pitstop], [stdout(pipe(Out))]),
     read_string(Out, _, Result),

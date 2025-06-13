@@ -2,21 +2,23 @@ import sys
 import numpy as np
 from tensorflow.keras.models import load_model
 
-# Load trained model
-model = load_model("pitstop_model.h5")
+# loading the trained, saved model
+model = load_model("F1_trained_model.h5")
 
-# Input args: circuit lap pitstop_num
+# READING INPUTS from PROLOG; circuit , lap , pitstop_number
 circuit = int(sys.argv[1])
 lap = int(sys.argv[2])
 pitstop = int(sys.argv[3])
 
-# Predict
-input_data = np.array([[circuit, lap, pitstop]])
-prediction = model.predict(input_data)
-predicted_class = np.argmax(prediction)
+# PREDICTION
+input_data = np.array([[circuit, lap, pitstop]])  # gathering inputs
+prediction = model.predict(input_data)            # running them through model
+predicted_class = np.argmax(prediction)           # receiving the predicted class
 
-# Map to label
-labels = ['Bad', 'So-So', 'Good']
+# MAPPING the class to a label
+labels = ['BAD TIME TO BOX', 'SO-SO', 'GOOD TIME TO BOX']
 print(labels[predicted_class])
 
-#print(f"Based on the model, this is a {labels[predicted_class]}", flush=True)
+
+
+
