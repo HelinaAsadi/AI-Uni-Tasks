@@ -16,6 +16,7 @@
 dry_tyre( hard ).
 dry_tyre( medium ).
 dry_tyre( soft ).
+medium_tyre( medium ).
 
 
 light_rain( light ).
