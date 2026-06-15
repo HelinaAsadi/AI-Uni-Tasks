@@ -13,4 +13,5 @@ A detailed report explaining each task, including:
 
 is available here:
 
-[Full Project Documentation](https://docs.google.com/document/d/1ZsUNreFj2I2QbZLZzjUWBWgQDuPHuW7CqD2cwAABbl8/edit?usp=drive_link)
+[View Full Project Docmetation PDF](docs/AI-tasks-report.pdf)
+[Project Document on DRIVE](https://docs.google.com/document/d/1ZsUNreFj2I2QbZLZzjUWBWgQDuPHuW7CqD2cwAABbl8/edit?usp=drive_link)
